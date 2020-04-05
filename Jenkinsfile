@@ -1,7 +1,6 @@
 node {
    stage('init') {
-	   WEBAPP_NAME='SpringBootPruebas'
-      checkout scm
+	   checkout scm
    }
    stage('build') {
       
@@ -26,7 +25,7 @@ node {
 	
 	stage('Restart'){
 		sh '''
-			az webapp restart --name $WEBAPP_NAME --resource-group spring-boot-1586095035968-rg
+			az webapp restart --name spring-boot-1586095035968 --resource-group spring-boot-1586095035968-rg
 		'''
 	}
 	
