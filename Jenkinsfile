@@ -1,6 +1,6 @@
 node {
    stage('init') {
-	   WEBAPP_NAME=SpringBootPruebas
+	   WEBAPP_NAME='SpringBootPruebas'
       checkout scm
    }
    stage('build') {
