@@ -58,7 +58,15 @@
             <os>linux</os>
             <javaVersion>java11</javaVersion>
             <webContainer>java11</webContainer>
-          </runtime>
+          </runtime>          
+         <!-- Begin of App Settings  -->
+         <appSettings>
+            <property>
+                  <name>JAVA_OPTS</name>
+                  <value>-Dserver.port=80</value>
+            </property>
+         </appSettings>
+         <!-- End of App Settings  -->
           <deployment>
             <resources>
               <resource>
