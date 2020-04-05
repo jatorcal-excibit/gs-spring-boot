@@ -1,5 +1,6 @@
 node {
    stage('init') {
+	   WEBAPP_NAME=SpringBootPruebas
       checkout scm
    }
    stage('build') {
@@ -12,7 +13,7 @@ node {
    
    stage('deploy') {
  
-    echo "Azure Connection"
+    	echo "Azure Connection"
     	withCredentials([azureServicePrincipal('	ExcibitAzurePrincipalService')]) {
 	    sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
 	    sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
@@ -22,4 +23,13 @@ node {
         mvn azure-webapp:deploy 
       '''
    }
+	
+	stage('Restart'){
+		sh '''
+			az webapp restart --name $WEBAPP_NAME --resource-group spring-boot-1586095035968-rg
+		'''
+	}
+	
+	stage('Api test'){
+	}
 }
